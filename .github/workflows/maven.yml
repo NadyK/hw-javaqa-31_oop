@@ -3,9 +3,8 @@
 
 name: Java CI with Maven
 
-
 on: [push, pull_request]
-   
+
 jobs:
   build:
 
@@ -18,6 +17,5 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-        
     - name: Build with Maven
-    if: mvn -B -e verify
+      run: mvn -B -e verify
