@@ -5,6 +5,29 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
+
+   //установка количества станций, проверка условий
+   @Test
+   void shouldQuantityStation() {
+       Radio radio = new Radio();
+       radio.setQuantityStation(3);
+       int expected = 3;
+       int actual = radio.getQuantityStation();
+       assertEquals(expected, actual);
+   }
+    @Test
+    void shouldQuantityStationCurrentStation() {
+        Radio radio = new Radio();
+        radio.setQuantityStation(3);
+        radio.setCurrentStation(3);
+        radio.setPrev();
+        int expected = 2;
+        int actual = radio.getCurrentStation();
+        assertEquals(expected, actual);
+    }
+
+
+
     // Установка текущей станции
     @Test
     void shouldRadio1() {
@@ -80,9 +103,9 @@ class RadioTest {
     @Test
     void increaseVolume() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
