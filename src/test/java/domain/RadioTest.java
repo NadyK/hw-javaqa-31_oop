@@ -5,6 +5,42 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
+
+   //Задауеся количество станций при создании объекта:
+   @Test
+   void shouldQuantityStation() {
+       Radio radio = new Radio(3);
+       int expected = 3;
+       int actual = radio.getQuantityStation();
+       assertEquals(expected, actual);
+   }
+   //Задается количество станций при создании объекта,
+   // вводится с пульта номер станции, за пределами нового диапазона станций,
+   // нажатие на кнопку Prev.
+    @Test
+    void shouldQuantityStationCurrentStationPrev() {
+        Radio radio = new Radio(3);
+        radio.setCurrentStation(3);
+        radio.setPrev();
+        int expected = 2;
+        int actual = radio.getCurrentStation();
+        assertEquals(expected, actual);
+    }
+    //Задается количество станций при создании объекта,
+    // вводится с пульта номер станции, крайний в пределах нового диапазона станций,
+    // нажатие на кнопку Next.
+
+    @Test
+    void shouldQuantityStationCurrentStationNext() {
+        Radio radio = new Radio(4);
+        radio.setCurrentStation(3);
+        radio.setNext();
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        assertEquals(expected, actual);
+    }
+
+
     // Установка текущей станции
     @Test
     void shouldRadio1() {
@@ -80,9 +116,9 @@ class RadioTest {
     @Test
     void increaseVolume() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
