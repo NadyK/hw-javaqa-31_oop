@@ -11,13 +11,15 @@ public class Radio {
     private int maxVolume = 100;
     private int currentVolume;
 
+    public Radio(int quantityStation) {
+        this.quantityStation = quantityStation;
+    }
+
+    public Radio() {
+    }
 
     public int getQuantityStation() {
         return quantityStation;
-    }
-
-    public void setQuantityStation(int quantityStation) {
-        this.quantityStation = quantityStation;
     }
 
     public int getCurrentStation() {

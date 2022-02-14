@@ -6,26 +6,39 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
 
-   //установка количества станций, проверка условий
+   //Задауеся количество станций при создании объекта:
    @Test
    void shouldQuantityStation() {
-       Radio radio = new Radio();
-       radio.setQuantityStation(3);
+       Radio radio = new Radio(3);
        int expected = 3;
        int actual = radio.getQuantityStation();
        assertEquals(expected, actual);
    }
+   //Задается количество станций при создании объекта,
+   // вводится с пульта номер станции, за пределами нового диапазона станций,
+   // нажатие на кнопку Prev.
     @Test
-    void shouldQuantityStationCurrentStation() {
-        Radio radio = new Radio();
-        radio.setQuantityStation(3);
+    void shouldQuantityStationCurrentStationPrev() {
+        Radio radio = new Radio(3);
         radio.setCurrentStation(3);
         radio.setPrev();
         int expected = 2;
         int actual = radio.getCurrentStation();
         assertEquals(expected, actual);
     }
+    //Задается количество станций при создании объекта,
+    // вводится с пульта номер станции, крайний в пределах нового диапазона станций,
+    // нажатие на кнопку Next.
 
+    @Test
+    void shouldQuantityStationCurrentStationNext() {
+        Radio radio = new Radio(4);
+        radio.setCurrentStation(3);
+        radio.setNext();
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        assertEquals(expected, actual);
+    }
 
 
     // Установка текущей станции
